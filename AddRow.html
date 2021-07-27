@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+	<style>
+    	* { font: 17px Arial; } 
+        table { width: 70%; }
+        table, th, td {
+        	 border: solid 1px #DDD;
+            border-collapse: collapse; 
+            padding: 2px 3px; 
+            text-align: center;
+        }
+    </style>
+
+</head>
+
+<body onload="createTable()">
+
+
+
+<div id="cont"></div> 
+
+<p>
+<input type="button" id="addRow" value="Add New Row" onclick="addRow()" />
+</p>
+    
+<p id='output'></p>
+</body>
+
+<script>
+    var arrHead = new Array();	
+    arrHead = ['Name', 'Date Of Birth','Phone Number','Email id', 'Add1', 'Add2'];
+
+
+    function createTable() {
+        var empTable = document.createElement('table');
+        empTable.setAttribute('id', 'empTable'); 
+
+        var tr = empTable.insertRow(0);
+        for (var h = 0; h < arrHead.length; h++) {
+            var th = document.createElement('th'); 
+            th.innerHTML = arrHead[h];
+            tr.appendChild(th);
+        }
+
+        var div = document.getElementById('cont');
+        div.appendChild(empTable);  
+    }
+
+ 
+    function addRow() {
+        var empTab = document.getElementById('empTable');
+
+        var rowCnt = empTab.rows.length;  
+        var tr = empTab.insertRow(rowCnt); 
+        tr = empTab.insertRow(rowCnt);
+
+        for (var c = 0; c < arrHead.length; c++) {
+            var td = document.createElement('td');
+            td = tr.insertCell(c);
+             
+            var ele = document.createElement('input');
+            ele.setAttribute('type', 'text');
+            ele.setAttribute('value', '');
+
+            td.appendChild(ele);
+          
+        }
+    }
+
+  
+       document.getElementById('output').innerHTML = arrValues;
+ 
+    
+</script>
+
+</body>
+</html>
